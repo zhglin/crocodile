@@ -2,6 +2,7 @@ package resp
 
 import "errors"
 
+// 错误码对应的错误消息
 var msgcode = map[int]string{
 	Success: "ok",
 
@@ -45,6 +46,7 @@ var msgcode = map[int]string{
 }
 
 // GetMsg get msg by code
+// 通过错误码返回错误信息
 func GetMsg(code int) string {
 	var (
 		msg    string
@@ -58,6 +60,7 @@ func GetMsg(code int) string {
 }
 
 // GetMsgErr get error msg by code
+// 错误码转换成error
 func GetMsgErr(code int) error {
 	msg := GetMsg(code)
 	return errors.New(msg)

@@ -20,7 +20,7 @@ type Group struct {
 
 	workerOnce sync.Once
 	ch         chan func(ctx context.Context) error
-	chs        []func(ctx context.Context) error
+	chs        []func(ctx context.Context) error // ch满的情况下的暂存区
 
 	ctx    context.Context
 	cancel func()
@@ -44,6 +44,7 @@ func WithCancel(ctx context.Context) *Group {
 }
 
 func (g *Group) do(f func(ctx context.Context) error) {
+	// 替换了内部执行是的ctx
 	ctx := g.ctx
 	if ctx == nil {
 		ctx = context.Background()

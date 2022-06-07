@@ -220,6 +220,7 @@ func RegistryClient(version string, port int) {
 			return
 		}
 		// do not get last addr
+		// 随机选择一个server进行连接
 		for {
 			getaddr := addrs[rand.Int()%len(addrs)]
 			// do not get failed addr

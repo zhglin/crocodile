@@ -1,5 +1,6 @@
 package resp
 
+// 错误码
 const (
 	// Success Success
 	Success = 0

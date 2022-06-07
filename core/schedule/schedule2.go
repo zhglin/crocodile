@@ -46,7 +46,7 @@ type task2 struct {
 	id        string             // taskid
 	name      string             // taskname
 	cronexpr  string             // cronexpr
-	cronsub   time.Duration      // cronexpt sub
+	cronsub   time.Duration      // cronexpt sub 执行期间的加锁时间
 	close     chan struct{}      // stop schedule
 	ctxcancel context.CancelFunc // store cancelfunc could cancel all task by this cancel
 	next      Next               // it save a func Next by route policy
